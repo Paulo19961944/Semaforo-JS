@@ -1,0 +1,53 @@
+/*ESTILO GLOBAL*/
+*{
+    margin: 0; /*Zera a Margem*/
+    padding: 0; /*Zera o Espaçamento*/
+    box-sizing: border-box; /*Ajusta o Box Model*/
+}
+
+/*CONTEÚDO DA PÁGINA*/
+body{
+    display: flex; /*Flexbox*/
+    flex-direction: column; /*Alinha em Colunas*/
+    align-items: center; /*Alinha Items ao Centro*/
+    background-color: #f5f5ff; /*Cor de Fundo Verde*/
+}
+
+/*SEÇÃO DO CONTEÚDO PRINCIPAL*/
+main section{
+    display: flex; /*Flexbox*/
+    flex-direction: column; /*Alinha em Colunas*/
+    align-items: center; /*Alinha ao Centro no Eixo Perpendicular*/
+}
+
+/*IMAGEM DA SEÇÃO PRINCIPAL*/
+main section img{
+    width: 40%; /*Largura de 40%*/
+}
+
+/*TITULO*/
+h1{
+    font-size: 2.5em; /*Tamanho da Fonte de 250%*/
+    font-family: "Share Tech Mono", monospace; /*Fonte do Google - Monoespaçada*/
+    margin: 32px; /*Margem de 32px em todos os lados*/
+}
+
+/*Botão*/
+button{
+    background-color: #034732; /*Cor de Fundo - Verde*/
+    color: #f5f5ff; /*Cor do Texto - Branco*/
+    border: none; /*Tira a Borda*/
+    border-radius: 999px; /*Borda Arredondada*/
+    font-size: 1.1em; /*Tamanho da Fonte de 110%*/
+    font-family: "DM Sans", sans-serif; /*Fonte do Google - DM Sans*/
+    width: 240px; /*Largura de 240px*/
+    height: 40px; /*Altura de 40px*/
+    margin: 64px 0 48px 0; /*Margem de 64px no Topo e de 48px em baixo e zera as demais*/
+    cursor: pointer; /*Mãozinha do Cursor*/
+}
+
+/*Botão ao Passar o Mouse*/
+button:hover{
+    transform: scale(1.03); /*Aumenta o Botão em 3%*/
+    transition: 0.7s ease-in-out; /*Transição suave ao passar o mouse*/
+}
