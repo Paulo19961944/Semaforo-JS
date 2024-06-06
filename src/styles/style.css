@@ -46,6 +46,11 @@ button{
     cursor: pointer; /*Mãozinha do Cursor*/
 }
 
+/*Esconde o Botão - JAVASCRIPT*/
+.hide-button{
+    display: none; /*Esconde o Botão*/
+}
+
 /*Botão ao Passar o Mouse*/
 button:hover{
     transform: scale(1.03); /*Aumenta o Botão em 3%*/

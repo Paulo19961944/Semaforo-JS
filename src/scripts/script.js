@@ -1,32 +1,36 @@
-// Adiciona Evento ao Botão Iniciar com uma função assincrona
+const semaforoImg = document.getElementById('semaforoImg'); // Obter elemento da imagem
+const iniciarBtn = document.getElementById('iniciarBtn'); // Obter elemento do botão
+
+/*Cria uma Lista de Cores para modificar a imagem*/
+const cores = {
+  vermelho: 'src/img/vermelho.png', /*Imagem Farol Vermelho*/
+  amarelo: 'src/img/amarelo.png', /*Imagem Farol Amarelo*/
+  verde: 'src/img/verde.png', /*Imagem Farol Verde*/
+  desligado: 'src/img/desligado.png' /*Imagem Farol Desligado*/
+};
+
+/*Função de Modificar a Cor*/
+const mudarCorSemaforo = (cor, tempo) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const corSinal = cores[cor]; // Captura a Cor
+      semaforoImg.src = corSinal; // Define a Imagem e Troca
+      resolve(); // Notifica sucesso sem valor
+    }, tempo);
+  });
+};
+
+/*Adiciona Evento no Botão*/
 iniciarBtn.addEventListener('click', async () => {
-    iniciarBtn.disabled = true; // Desabilita o Botão
-    await iniciarSemaforo(); // Inicia o Semaforo
-    iniciarBtn.disabled = false; // Habilita o Botão
+  try {
+    iniciarBtn.classList.add('hide-button'); /*Esconde o Botão*/
+    await mudarCorSemaforo('vermelho', 500); /*Farol Vermelho*/
+    await mudarCorSemaforo('amarelo', 3000); /*Farol Amarelo*/
+    await mudarCorSemaforo('verde', 2000); /*Farol Verde*/
+    await mudarCorSemaforo('desligado', 5000); /*Farol Desligado*/
+    iniciarBtn.classList.remove('hide-button'); /*Aparece o Botão*/
+    iniciarBtn.innerText = 'Reiniciar'; /*Muda o valor para reiniciar*/
+  } catch (error) {
+    console.error(error); /*Caso ocorra um erro, mostra no console*/
+  }
 });
-
-function aguardar(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms)); // Retorna uma promise no tempo especificado
-}
-
-// Função Assincrona para inicar o semáforo
-async function iniciarSemaforo() {
-    iniciarBtn.style.display = 'none'; // Esconde o Botão
-    await mudarCor('src/img/vermelho.png', 5000); // Inicia com o Semáforo Vermelho
-    await mudarCor('src/img/amarelo.png', 3000); // Muda o semáforo para Amarelo
-    await mudarCor('src/img/verde.png', 5000); // Muda o Semáforo para Verde
-    await mudarCor('src/img/desligado.png', 100); // Desliga o Semáforo
-    await botaoDisplay('block', 'Reiniciar') // Exibe o Botão com o Valor Reiniciar
-}
-
-// Função Assíncrona para mudar a cor
-async function mudarCor(cor, tempo) {
-    semaforoImg.src = cor; // Captura a Cor do Semáforo
-    await aguardar(tempo); // Captura o Tempo do Semáforo na Promise
-}
-
-// Função Assíncrona pra exibir o Estado do Botão
-async function botaoDisplay(exibir, estado){
-    iniciarBtn.style.display = exibir // Exibe o Botão
-    iniciarBtn.innerText = estado // Adiciona novo estado ao Botão
-}
